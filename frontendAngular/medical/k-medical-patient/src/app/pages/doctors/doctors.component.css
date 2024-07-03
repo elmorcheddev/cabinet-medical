@@ -1,0 +1,224 @@
+
+.doctor {
+    display: flex;
+    align-items: flex-start;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+    position: relative;
+}
+
+.doctor .doctor-image img {
+    max-width: 100px;
+    border-radius: 20%;
+}
+
+.doctor .doctor-content {
+    flex: 1;
+    padding-left: 15px;
+}
+
+.doctor .doctor-content h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.doctor .doctor-content .share-link a {
+    margin-right: 10px;
+}
+
+.doctor .button-group {
+    display: flex;
+    gap: 10px;
+}
+
+.doctor .button-group .btn {
+    width: auto;
+    white-space: nowrap;
+}
+ 
+
+ 
+.doctor {
+    background-color: #f8f9fa; /* Add background color for better visual separation */
+    padding: 15px;
+    border: 1px solid #dee2e6; /* Optional: Add border for better visual separation */
+    border-radius: 5px; /* Optional: Add border radius for rounded corners */
+}
+
+.doctor-image img {
+    max-width: 100px; /* Adjust as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.doctor-content {
+    flex: 1; /* Ensures the content takes up remaining space */
+}
+
+.position-relative {
+    height: 100%; /* Ensure the container takes full height */
+}
+
+.h-100 {
+    height: 100%; /* Ensure the container takes full height */
+}
+
+@media (min-width: 768px) {
+    .row > [class*='col-'] {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+.speciality-filter h3 {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.5em;
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.speciality-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.speciality-item {
+    margin-bottom: 10px;
+}
+
+.speciality-link {
+    display: block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #007bff;
+    background: #e9ecef;
+    transition: background 0.3s, color 0.3s;
+}
+
+.speciality-link:hover {
+    background: #232324;
+    color: #fff;
+}
+.calendar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.calendar-nav {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: #007bff;
+}
+
+.calendar-nav:hover {
+    color: #0056b3;
+}
+
+.date-display {
+    margin: 0 1rem;
+    font-size: 1.2rem;
+}
+
+.calendar {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    margin-top: 1rem;
+}
+
+.calendar-header {
+    text-align: center;
+    padding: 0.5rem;
+    font-weight: bold;
+    background-color: #f0f0f0;
+}
+
+.calendar-day {
+    text-align: center;
+    padding: 0.8rem;
+    cursor: pointer;
+}
+
+.calendar-day:hover {
+    background-color: #f0f0f0;
+}
+
+.calendar-day.selected {
+    background-color: #007bff;
+    color: white;
+}
+
+.calendar-day.disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+.calendar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .calendar-nav {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+  
+  .date-display {
+    font-size: 1.25rem;
+  }
+  
+  .calendar {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .calendar th, .calendar td {
+    width: 14.28%;
+    text-align: center;
+    padding: 0.5rem;
+  }
+  
+  .calendar-day {
+    cursor: pointer;
+  }
+  
+  .selected {
+    background-color: #007bff;
+    color: white;
+  }
+  .selectedDate{
+    background-color: #f0f0f0;   
+  }
+  .disabled {
+    background-color: #e9ecef;
+    color: #6c757d;
+    pointer-events: none;
+  }
+  .calendar-day {
+    cursor: pointer;
+}
+
+.calendar-day.active-day {
+    background-color:speciality-list #007bff;
+    color: white;
+    border-radius: 20%;
+}
+
+.calendar-day:hover {
+    background-color: #007bff;
+    color: white;
+    border-radius: 20%;
+}

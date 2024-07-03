@@ -1,0 +1,170 @@
+ 
+    <div class="section overflow-hidden position-relative" id="wrapper">
+      <div class="page-content-wrapper">
+          <!-- Admin Tab Menu Start -->
+          <aside class="aside-menu" >
+            <nav class="nav flex-column admin-tab-menu"style="margin-top: 7rem; margin-bottom: 5rem;">
+                <a routerLink="/myAppoinment"><i class="fa fa-calendar-alt"></i> My Appointment</a>
+                <a routerLink="/medicalFolder" class="active"><i class="fa fa-folder-open"></i> My Medical Folders</a>
+                 <a routerLink="/logout"><i class="fa fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </aside>
+          <!-- Admin Tab Menu End -->
+
+          <!-- Content Wrapper Start -->
+          <div class="main-content-wrapper">
+              <div class="container-fluid">
+                  <!-- Student Top Start -->
+                  <div class="admin-top-bar students-top">
+                      <div class="courses-select">
+                      
+                          <h4 class="title">Medical Folders </h4>
+                      </div>
+
+                      
+                  </div>
+                  <!-- Student Top End -->
+
+                  <!-- Student's Wrapper Start -->
+                  <div class="students-wrapper students-active">
+                      <div class="swiper-container">
+                          <div class="swiper-wrapper">
+                              <div class="swiper-slide">
+                                  <!-- Single Student Start -->
+                                  <div class="container">
+                                      <div class="dossier-header">
+                                        <h2>Medical Folder</h2>
+                                      </div>
+                                      <div class="top-sections">
+                                        <div id="patient-info" class="patient-info">
+                                          <div class="patient-img-container">
+                                            <img [src]="dossier.patient.img ? 'data:image/jpeg;base64,' + dossier.patient.img : 'assets/default-avatar.png'" alt="Patient Image" class="patient-img" />
+                                          </div>
+                                          <div class="patient-details">
+                                            <h3>{{ dossier.patient.nom }} {{ dossier.patient.prenom }}</h3>
+                                            <p><strong>Date of Birth:</strong> {{ dossier.patient.dateNaissance }}</p>
+                                            <p><strong>Address:</strong> {{ dossier.patient.adresse }}</p>
+                                            <p><strong>Phone:</strong> {{ dossier.patient.tel }}</p>
+                                            <p><strong>Email:</strong> {{ dossier.patient.email }}</p>
+                                            <p><strong>Health Insurance:</strong> {{ dossier.patient.assuranceMaladie }}</p>
+                                            <p><strong>Social Security Number:</strong> {{ dossier.patient.numeroSecuriteSociale }}</p>
+                                          </div>
+                                        </div>
+                                        <div id="dossier-info" class="dossier-info">
+                                          <h4>Dossier Details</h4>
+                                          <p><strong>Dossier Number:</strong> {{ dossier.numDossier }}</p>
+                                          <p><strong>Date Created:</strong> {{ dossier.patient.dateCreation }}</p>
+                                              
+                                          </div>
+                                        </div>
+                                       <div class="tab-container">
+                                        <ul class="tab-menu">
+                                         
+                                          <li class="tab-link" [class.active]="activeTab === 'questionnaire'" (click)="setActiveTab('questionnaire')">Questionnaire</li>
+                                          <li class="tab-link" [class.active]="activeTab === 'consultations'" (click)="setActiveTab('consultations')">Consultations</li>
+                                         </ul>
+                                        <div id="consultations" class="tab-content" [class.active]="activeTab === 'consultations'">
+                                          <div class="consultations">
+                                             
+                                            
+                                            <div class="row">
+                                              <div class="col-12" *ngFor="let c of listConst">
+                                                
+                                                <div class="card mb-4">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title">{{ c.docteur.nom }} {{ c.docteur.prenom }}</h5>
+                                                    <h6 class="card-subtitle mb-2 text-muted">{{ c.dateVisit | date }}</h6>
+                                                    <p class="card-text"><strong>Reason for Visit:</strong> {{ c.reason }}</p>
+                                                   
+                                                   
+                                                   
+                                                  
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        
+                                      
+                                        <div id="questionnaire" class="tab-content" [class.active]="activeTab === 'questionnaire'">
+                                          <div class="questionnaire">
+                                            <h4>Questionnaire</h4>
+                                            <div id="questionnaire" class="tab-content" [class.active]="activeTab === 'questionnaire'">
+                                              <div class="questionnaire">
+                                                 <div *ngIf="questionnaire">
+                                                  <p><strong>Folder Number:</strong> {{ questionnaire.dossierMedical.numDossier }}</p>
+                                            
+                                                  <p><strong>Profession:</strong> {{ questionnaire.profession }}</p>
+                                            
+                                                  <p><strong>Vous êtes adressé par:</strong> {{ questionnaire.adressePar }}</p>
+                                            
+                                                  <p><strong>Nom de votre médecin:</strong> {{ questionnaire.medecinNom }}</p>
+                                            
+                                                  <p><strong>Lieu:</strong> {{ questionnaire.lieu }}</p>
+                                            
+                                                  <p><strong>Nombre d’enfants:</strong> {{ questionnaire.enfants }}</p>
+                                            
+                                                  <p><strong>Prenez-vous actuellement des médicaments ?</strong> {{ questionnaire.medicaments ? 'Oui' : 'Non' }}</p>
+                                                  <p *ngIf="questionnaire.medicaments">{{ questionnaire.medicamentsDetails }}</p>
+                                            
+                                                  <p><strong>Avez-vous des allergies connues ?</strong> {{ questionnaire.allergieConnue ? 'Oui' : 'Non' }}</p>
+                                                  <p *ngIf="questionnaire.allergieConnue"><strong>Allergies connues:</strong> {{ questionnaire.allergieDentaire }}</p>
+                                            
+                                                  <p><strong>Avez-vous d'autres pathologies ?</strong> {{ questionnaire.autresPathologies ? 'Oui' : 'Non' }}</p>
+                                                  <p *ngIf="questionnaire.autresPathologies"><strong>Autres pathologies:</strong> {{ questionnaire.autresPathologies }}</p>
+                                            
+                                                  <p><strong>Avez-vous subi une intervention chirurgicale récente ?</strong> {{ questionnaire.interventionChirurgicale ? 'Oui' : 'Non' }}</p>
+                                                  <p *ngIf="questionnaire.interventionChirurgicale"><strong>Détails de l'intervention :</strong> {{ questionnaire.interventionDetails }}</p>
+                                            
+                                                  <p><strong>Adhérez-vous à une mutuelle ?</strong> {{ questionnaire.mutuelle ? 'Oui' : 'Non' }} <span *ngIf="questionnaire.mutuelle">{{ questionnaire.mutuelleAutre }}</span></p>
+                                            
+                                                  <p><strong>Bénéficiez-vous de la CMU ?</strong> {{ questionnaire.cmu ? 'Oui' : 'Non' }}</p>
+                                            
+                                                  <p><strong>Référent :</strong> {{ questionnaire.referent }}</p>
+                                            
+                                                  <p><strong>Prenez-vous des anticoagulants ?</strong> {{ questionnaire.anticoagulants ? 'Oui' : 'Non' }}</p>
+                                            
+                                                  <p><strong>Prenez-vous des biphosphonates ?</strong> {{ questionnaire.biphosphonates ? 'Oui' : 'Non' }}</p>
+                                            
+                                                  <p><strong>Souffrez-vous de tuberculose ?</strong> {{ questionnaire.tuberculose ? 'Oui' : 'Non' }}</p>
+                                            
+                                                  <p><strong>Souffrez-vous de diabète ?</strong> {{ questionnaire.diabete ? 'Oui' : 'Non' }}</p>
+                                            
+                                                  <p><strong>Souffrez-vous de cardiopathie ?</strong> {{ questionnaire.cardiopathie ? 'Oui' : 'Non' }}</p>
+                                            
+                                                  <p><strong>Avez-vous d'autres maladies ?</strong> {{ questionnaire.autres ? 'Oui' : 'Non' }}</p>
+                                                  <p *ngIf="questionnaire.autres"><strong>Autres maladies:</strong> {{ questionnaire.autresPathologies }}</p>
+                                            
+                                                  <p><strong>Fumez-vous ?</strong> {{ questionnaire.fume ? 'Oui' : 'Non' }}</p>
+                                            
+                                                  <p><strong>Consommez-vous de l’alcool ?</strong> {{ questionnaire.alcool ? 'Oui' : 'Non' }}</p>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            
+                                          </div>
+                                        </div>
+                                        
+                                      </div>
+                                    </div>
+                              
+                                    
+                                     
+                                     
+                                    
+                                  <!-- Single Student End -->
+                              </div>
+                            
+                          </div>
+
+                          
+                      </div>
+                  </div>
+                  
+              </div>
+          </div>
+       </div>
+  </div>
+
+

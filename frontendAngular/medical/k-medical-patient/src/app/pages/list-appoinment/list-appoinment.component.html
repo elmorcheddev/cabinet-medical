@@ -1,0 +1,51 @@
+<div class="section overflow-hidden position-relative" id="wrapper">
+    <div class="page-content-wrapper">
+      <!-- Aside Menu Start -->
+      <aside class="aside-menu">
+        <nav class="nav flex-column admin-tab-menu" style="margin-top: 7rem; margin-bottom: 5rem;">
+          <a routerLink="/myAppoinment"><i class="fa fa-calendar-alt"></i> My Appointment</a>
+          <a routerLink="/medicalFolder"><i class="fa fa-folder-open"></i> My Medical Folders</a>
+           <a routerLink="/logout"><i class="fa fa-sign-out-alt"></i> Logout</a>
+        </nav>
+      </aside>
+      <div class="main-content-wrapper">
+        <div class="container-fluid">
+          <!-- Student Top Start -->
+          <div class="admin-top-bar students-top">
+            <div class="courses-select">
+              <h4 class="title">My Appointments</h4>
+            </div>
+          </div>
+          <!-- Student Top End -->
+  
+          <!-- Appointments Table Start -->
+          <div class="students-wrapper students-active">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Doctor</th>
+                    <th>Status</th>
+                   </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let rendezvous of rendezvousList">
+                    <td>{{ rendezvous.jours }}</td>
+                    <td>{{ rendezvous.heurs }}</td>
+                    <td>{{ rendezvous.docteur.nom }} {{ rendezvous.docteur.prenom }}</td>
+                    <td>{{ rendezvous.etat ? 'Confirmed' : 'Pending' }}</td>
+                    
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- Appointments Table End -->
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  

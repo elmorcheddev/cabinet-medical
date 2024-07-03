@@ -1,0 +1,92 @@
+<div class="page-header">
+    <div class="page-title">
+        <h4>Rendez-vous list</h4>
+        <h6>View/Search Docteur </h6>
+    </div>
+
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-top">
+            <div class="search-set">
+              <div class="search-path">
+                <a class="btn btn-filter" id="filter_search">
+                  <img src="assets/img/icons/filter.svg" alt="img">
+                  <span><img src="assets/img/icons/closes.svg" alt="img"></span>
+                </a>
+              </div>
+              <div class="search-input">
+                <a class="btn btn-searchset"><img src="assets/img/icons/search-white.svg" alt="img"></a>
+              </div>
+            </div>
+          </div>
+
+        <div class="table-responsive">
+            <table class="table  datanew">
+                <thead>
+                    <tr>
+
+                        <th>Patient</th>
+                        <th>Num Tel</th>
+                        <th>Specialite </th>
+                        <th>Docteur </th>
+                        <th>Jours </th>
+                        <th>Heurs </th>
+                        <th>STATUS </th>
+                        <th >Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let d of rendezvousList">
+
+                        <td> {{d.patient.nom+' '+d.patient.prenom}}
+                        <td><a href="tel:{{d.patient.tel}}">{{d.patient.tel}}</a>
+                        </td>
+                        <td>{{d.docteur.specialite.nomSpecialite}}</td>
+                        <td> {{d.docteur.nom+' '+d.docteur.prenom}}
+                        <td>{{d.jours | date }}</td>
+                        <td>{{d.heurs }}</td>
+                        <td><span *ngIf="!d.etat && d.enattent" style="color: orange;">En attent </span>
+                            <span *ngIf="d.etat && !d.enattent" style="color: blue;">Accepter </span>
+                            <span *ngIf="!d.etat && !d.enattent" style="color: red;">Refuser </span>
+                        <td>
+                            <a class="me-3" (click)="findById(d.id)" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">
+                                <img src="../../../assets/img/icons/time.svg">
+                            </a>
+
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Appointment Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form #form="ngForm" (ngSubmit)="updateAppoinment(form)">
+
+                    <div class="mb-3">
+                        <label for="appointmentHours" class="form-label">Appointment Hours</label>
+                        <input type="time" [(ngModel)]="rendezzvous.heurs" name="heurs" class="form-control">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

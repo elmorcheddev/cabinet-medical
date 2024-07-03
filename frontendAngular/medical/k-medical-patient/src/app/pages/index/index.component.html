@@ -1,0 +1,138 @@
+<carousel [interval]="5000" [noPause]="true" [showIndicators]="true" class="custom-carousel">
+  <slide *ngFor="let slide of slides; let index = index">
+    <img [src]="slide.image" alt="Slide image"
+      class="swiper-slide animation-style-01 single-slider d-flex align-items-center d-block w-100 carousel-img fade">
+    <div class="container slider-content-overlay">
+      <div class="slider-content">
+        <h6 class="sub-title">{{slide.title}}</h6>
+        <h1 class="main-title">{{slide.subtitle}}.</h1>
+        <p>{{slide.content}}</p>
+        <a routerLink="/doctors" class="btn btn-primary btn-hover-secondary">Make Appointment</a>
+      </div>
+      <div class="container">
+
+        <div class="slider-social">
+          <div class="social-wrapper">
+            <p>Connect with us:</p>
+            <ul class="social">
+              <li><a href="#"><i class="icofont-facebook"></i></a></li>
+              <li><a href="#"><i class="icofont-skype"></i></a></li>
+              <li><a href="#"><i class="icofont-twitter"></i></a></li>
+              <li><a href="#"><i class="icofont-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </slide>
+</carousel>
+<section class="services-area pb-70">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <div class="section-title-warp">
+          <span class="sub-title">
+            <i class="flaticon-hashtag-symbol"></i>
+            Our Best Dental Services
+          </span>
+          <h2>Enjoy Specialized Care Through Precision, Artistry, and Experience</h2>
+        </div>
+      </div>
+       
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-6" *ngFor="let s of listSpec">
+        <div class="single-services">
+          <div class="services-image">
+            <a  ><img [src]="'data:image/jpeg;base64,' + s.img" alt="{{s.img}}"
+                alt="image"></a>
+           
+          </div>
+          <div class="services-content">
+            <h3>
+              <a (click)="filterBySpecialite(s.nomSpecialite)">{{s.nomSpecialite}}</a>
+            </h3>
+            <p> </p>
+            <div class="buttons">
+              <button class="btn btn-primary" style="margin: 5px;" (click)="learnMore(s.id)"><i class="fa fa-book"></i> Learn</button>
+              <button class="btn btn-secondary" (click)="filterBySpecialite(s.nomSpecialite)"><i class="fa fa-plus"></i> Doctors</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="about-area pb-100">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <div class="about-content">
+          <span class="sub-title">
+            <i class="flaticon-hashtag-symbol"></i>
+            About Our Hospital
+          </span>
+          <h3>Our Clients are Our Priority, We Offer Quality Dental Services <span>of Specialists</span></h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.</p>
+          <div class="row">
+            <div class="col-lg-6 col-md-6">
+              <ul class="about-list">
+                <li>
+                  <i class="flaticon-check"></i>
+                  Complete Crown
+                </li>
+                <li>
+                  <i class="flaticon-check"></i>
+                  Dental Implants
+                </li>
+                <li>
+                  <i class="flaticon-check"></i>
+                  Dental X-Ray
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-6 col-md-6">
+              <ul class="about-list">
+                <li>
+                  <i class="flaticon-check"></i>
+                  Cosmetic Filling
+                </li>
+                <li>
+                  <i class="flaticon-check"></i>
+                  Cosmetic Filling
+                </li>
+                <li>
+                  <i class="flaticon-check"></i>
+                  Root Canal
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-md-6">
+              <div class="about-info">
+                <i class="flaticon-caduceus"></i>
+                <h4>25 Years</h4>
+                <span>Dental Experienced</span>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+              <div class="about-info">
+                <i class="flaticon-chair"></i>
+                <h4>6405+</h4>
+                <span>Dental Services</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="about-image">
+          <img src="assets/images/about/about-1.png" alt="image">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,92 @@
+
+<div class="page-header">
+    <div class="page-title">
+        <h4>Patient  list</h4>
+        <h6>View/Search Patient  </h6>
+    </div>
+    <div class="page-btn">
+        <a   class="btn btn-added"  data-bs-toggle="modal" 
+        data-bs-target="#exampleModalLong">
+            <img src="assets/img/icons/plus.svg" class="me-1" alt="img" >Add Patient
+        </a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-top">
+            <div class="search-set">
+                <div class="search-path">
+                    <a class="btn btn-filter" id="filter_search">
+                        <img src="assets/img/icons/filter.svg" alt="img">
+                        <span><img src="assets/img/icons/closes.svg" alt="img"></span>
+                    </a>
+                </div>
+                <div class="search-input">
+                    <a class="btn btn-searchset"><img src="assets/img/icons/search-white.svg" alt="img"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table  datanew">
+                <thead>
+                    <tr>
+                        
+                        <th>Nom et Prenom</th>
+                        <th>Adresse  </th>
+                         <th>Tel </th>
+                         <th>numero Securite Sociale </th>
+                         <th>assurance Maladie</th>
+                         <th>Date Naissance </th>
+                        <th>E-mail </th>
+                        <th>STATUS </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="rendezvousList">
+                    <tr *ngFor="let d of rendezvousList">
+                        
+                        <td> {{d.nom+' '+d.prenom}}
+                        </td>
+                         <td>{{d.adresse}}</td>
+                        <td>{{d.tel}}</td>
+                        <td>{{d.numeroSecuriteSociale}}</td>
+                        <td>{{d.assuranceMaladie}}</td>
+                        <td>{{d.dateNaissance}}</td>
+                        <td>{{d.email}}</td>
+                        <td><span *ngIf="!d.etat" style="color: red;">DESACTIVATED </span>
+                            <span *ngIf="d.etat" style="color: blue;">ACTIVATED </span> </td>
+                            <button class="btn btn-primary" (click)="goToDossierMedical(d.id)" >
+                                <i class="fa fa-folder"></i>  Medical folder
+                              </button>
+                    </tr>
+                 
+                </tbody>
+                <tbody *ngIf="listPatient">
+                    <tr *ngFor="let d of listPatient">
+                        
+                        <td> {{d.nom+' '+d.prenom}}
+                        </td>
+                         <td>{{d.adresse}}</td>
+                        <td>{{d.tel}}</td>
+                        <td>{{d.numeroSecuriteSociale}}</td>
+                        <td>{{d.assuranceMaladie}}</td>
+                        <td>{{d.dateNaissance}}</td>
+                        <td>{{d.email}}</td>
+                        <td><span *ngIf="!d.etat" style="color: red;">DESACTIVATED </span>
+                            <span *ngIf="d.etat" style="color: blue;">ACTIVATED </span> </td>
+                         <td>
+                            <button class="btn btn-primary" (click)="goToDossierMedical(d.id)" >
+                              <i class="fa fa-folder"></i>  Medical folder
+                            </button>
+                            
+                        </td>
+                    </tr>
+                 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+ 

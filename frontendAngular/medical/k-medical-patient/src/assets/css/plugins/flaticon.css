@@ -1,0 +1,41 @@
+@font-face {
+    font-family: "flaticon";
+    src: url("../../fonts/flaticon.ttf") format("truetype"),
+url("../../fonts/flaticon.woff") format("woff"),
+url("../../fonts/flaticon.woff2") format("woff2"),
+url("../../fonts/flaticon.eot") format("embedded-opentype"),
+url("../../fonts/flaticon.svg") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-computer:before {
+    content: "\f101";
+}
+.flaticon-left-quote:before {
+    content: "\f102";
+}
+.flaticon-lotus:before {
+    content: "\f103";
+}
+.flaticon-lotus-flower:before {
+    content: "\f104";
+}
+.flaticon-lunges:before {
+    content: "\f105";
+}
+.flaticon-maps-and-flags:before {
+    content: "\f106";
+}
+.flaticon-notification:before {
+    content: "\f107";
+}

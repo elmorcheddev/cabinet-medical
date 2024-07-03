@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: k-medical
+    
+  datasource:
+    url: jdbc:mysql://localhost:3306/medic
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    generate-ddl: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        ddl-auto: update
+  servlet:
+     multipart:
+         max-file-size: 100MB
+         max-request-size: 100MB
+ 
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: your-email@gmail.com
+    password: your-email-password
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true

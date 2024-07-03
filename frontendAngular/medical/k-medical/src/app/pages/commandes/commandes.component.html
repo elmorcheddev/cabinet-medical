@@ -1,0 +1,64 @@
+<div class="container">
+
+    <h1 class="text-center">List des Commandes </h1>
+    <div class="card">
+        <div class="card-title p-3" *ngIf="adminService.rolesMatch(['ASSISTANT'])"> Ajouter Commande</div>
+        <div class="card-body" *ngIf="adminService.rolesMatch(['ASSISTANT'])">
+            <form #form="ngForm" (ngSubmit)="addCommandes(form)">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <input type="hidden" [(ngModel)]="utilisateur.id" name="assistant" class="form-control"
+                                id="basic-default-fullname">
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Ajouter Commandes</button>
+                </div>
+
+
+            </form>
+        </div>
+
+        <div class="table-responsive text-nowrap">
+            <table class="table p-3">
+                <thead>
+                    <tr class="text-center">
+                        <th>code de Commandes</th>
+                        <th>Date de Commande</th>
+                        <th>Client</th>
+                         <th>Actions</th>
+
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                    <tr *ngFor="let cmd of commandeList" class="text-center">
+                        <td>{{cmd.id}}</td>
+                        <td>{{cmd.orderDate}}</td>
+                        <td>{{cmd.assistant.nom}}</td>
+                         <td>
+                            <button type="button" class="btn btn-basic" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop1" (click)="findById(cmd.id)">
+                                <img src="../../../assets/img/icons/edit-6.svg" class="text-end" width="30" height="30">
+                            </button>
+                            <button class="btn btn-basic" (click)="delete(cmd.id)">
+                                <img src="../../../assets/img/icons/delete.svg" class="text-end" width="30" height="30">
+                            </button>
+                            <button class="btn btn-basic" (click)="getInfo(cmd.id)">
+                                <img src="../../../assets/img/icons/settings.svg" class="text-end" width="30"
+                                    height="30">
+                            </button>
+                        </td>
+                       
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

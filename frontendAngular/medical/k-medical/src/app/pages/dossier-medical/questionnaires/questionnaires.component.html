@@ -1,0 +1,111 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="staticBackdropLabel">Fiche Personnelle Nouveau Patient</h5>
+</div>
+<div class="container">
+    <div id="patient-info" class="patient-info">
+        <div class="patient-img-container">
+            <img [src]="questionnaire.dossierMedical.patient.img ? 'data:image/jpeg;base64,' + questionnaire.dossierMedical.patient.img : 'assets/default-avatar.png'"
+                alt="Patient Image" class="patient-img" />
+        </div>
+        <div class="patient-details">
+            <h3>{{ questionnaire.dossierMedical.patient.nom }} {{ questionnaire.dossierMedical.patient.prenom }}</h3>
+            <p><strong>Date of Birth:</strong> {{ questionnaire.dossierMedical.patient.dateNaissance }}</p>
+            <p><strong>Address:</strong> {{ questionnaire.dossierMedical.patient.adresse }}</p>
+            <p><strong>Phone:</strong> {{ questionnaire.dossierMedical.patient.tel }}</p>
+            <p><strong>Email:</strong> {{ questionnaire.dossierMedical.patient.email }}</p>
+            <p><strong>Health Insurance:</strong> {{ questionnaire.dossierMedical.patient.assuranceMaladie }}</p>
+            <p><strong>Social Security Number:</strong> {{ questionnaire.dossierMedical.patient.numeroSecuriteSociale }}
+            </p>
+        </div>
+    </div>
+
+    <h1>Questionnaire Médical Confidentiel</h1>
+
+    <form #form="ngForm" (ngSubmit)="saveQuestionnaire(form)">
+        <fieldset>
+            <legend>Informations Personnelles</legend>
+            <label for="profession">Profession :</label>
+            <input type="text" id="profession" name="profession" [(ngModel)]="questionnaire.profession"><br><br>
+
+            <label for="adresse_par">Vous êtes adressé par :</label>
+            <input type="text" id="adresse_par" name="adresse_par" [(ngModel)]="questionnaire.adressePar"><br><br>
+
+            <label for="medecin_nom">Nom de votre médecin :</label>
+            <input type="text" id="medecin_nom" name="medecin_nom" [(ngModel)]="questionnaire.medecinNom"><br><br>
+
+            <label for="lieu">Lieu :</label>
+            <input type="text" id="lieu" name="lieu" [(ngModel)]="questionnaire.lieu"><br><br>
+
+            <label for="enfants">Nombre d’enfants :</label>
+            <input type="number" id="enfants" name="enfants" [(ngModel)]="questionnaire.enfants"><br><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Antécédents Médicaux</legend>
+            <label>Prenez-vous actuellement des médicaments ?</label><br>
+            <input type="radio" id="medicaments_oui" name="medicaments" [(ngModel)]="questionnaire.medicaments"
+                [value]="true">
+            <label for="medicaments_oui">Oui</label><br>
+            <input type="radio" id="medicaments_non" name="medicaments" [(ngModel)]="questionnaire.medicaments"
+                [value]="false">
+            <label for="medicaments_non">Non</label><br>
+            <textarea id="medicaments_details" name="medicaments_details" rows="4" cols="50"
+                [(ngModel)]="questionnaire.medicamentsDetails" placeholder="Si oui, lesquels ?"></textarea><br><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Antécédents Allergiques</legend>
+            <label>Avez-vous des allergies ?</label><br>
+            <input type="radio" id="allergies_oui" name="allergies" [(ngModel)]="questionnaire.allergieConnue"
+                [value]="true">
+            <label for="allergies_oui">Oui</label><br>
+            <input type="radio" id="allergies_non" name="allergies" [(ngModel)]="questionnaire.allergieConnue"
+                [value]="false">
+            <label for="allergies_non">Non</label><br>
+            <textarea id="allergies_details" name="allergies_details" rows="4" cols="50"
+                [(ngModel)]="questionnaire.allergieDentaire" placeholder="Si oui, lesquelles ?"></textarea><br><br>
+        </fieldset>
+
+        <fieldset>
+            <legend>Antécédents Chirurgicaux</legend>
+            <label>Avez-vous subi des interventions chirurgicales ?</label><br>
+            <input type="radio" id="chirurgies_oui" name="chirurgies"
+                [(ngModel)]="questionnaire.interventionChirurgicale" [value]="true">
+            <label for="chirurgies_oui">Oui</label><br>
+            <input type="radio" id="chirurgies_non" name="chirurgies"
+                [(ngModel)]="questionnaire.interventionChirurgicale" [value]="false">
+            <label for="chirurgies_non">Non</label><br>
+            <textarea id="chirurgies_details" name="chirurgies_details" rows="4" cols="50"
+                [(ngModel)]="questionnaire.interventionDetails" placeholder="Si oui, lesquelles ?"></textarea><br><br>
+        </fieldset>
+        <fieldset>
+            <legend>Antécédents Médicaux</legend>
+            <label>Souffrez-vous de :</label><br>
+            <label><input type="checkbox" name="tuberculose" [(ngModel)]="questionnaire.tuberculose"> Tuberculose</label><br>
+            <label><input type="checkbox" name="diabete" [(ngModel)]="questionnaire.diabete"> Diabète</label><br>
+            <label><input type="checkbox" name="cardiopathie" [(ngModel)]="questionnaire.cardiopathie"> Cardiopathie</label><br>
+            <label><input type="checkbox" name="autres" [(ngModel)]="questionnaire.autres"> Autres maladies (précisez)</label><br>
+            <textarea name="autresPathologies" rows="4" cols="50" [(ngModel)]="questionnaire.autresPathologies" placeholder="Précisez"></textarea><br><br>
+        </fieldset>
+        
+        
+        
+
+        <fieldset>
+            <legend>Habitudes de Vie</legend>
+            <label>Fumez-vous ?</label><br>
+            <input type="radio" id="fume_oui" name="fume" [(ngModel)]="questionnaire.fume" [value]="true">
+            <label for="fume_oui">Oui</label><br>
+            <input type="radio" id="fume_non" name="fume" [(ngModel)]="questionnaire.fume" [value]="false">
+            <label for="fume_non">Non</label><br>
+
+            <label>Consommez-vous de l’alcool ?</label><br>
+            <input type="radio" id="alcool_oui" name="alcool" [(ngModel)]="questionnaire.alcool" [value]="true">
+            <label for="alcool_oui">Oui</label><br>
+            <input type="radio" id="alcool_non" name="alcool" [(ngModel)]="questionnaire.alcool" [value]="false">
+            <label for="alcool_non">Non</label><br><br>
+        </fieldset>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>

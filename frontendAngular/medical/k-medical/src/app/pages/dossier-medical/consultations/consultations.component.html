@@ -1,0 +1,229 @@
+<div class="container">
+    <div class="page-header">
+        <div class="page-title">
+            <h4>Consultations</h4>
+        </div>
+        <div class="page-btn">
+            <a class="btn btn-added" (click)="goToMedicalFolder()">
+                <img src="assets/img/icons/plus.svg" class="me-1" alt="img">Back to Medical Folder
+            </a>
+        </div>
+    </div>
+    <div class="top-sections">
+        <div id="patient-info" class="patient-info">
+            <div class="patient-img-container">
+                <img [src]="'data:image/jpeg;base64,'+consultation.dossierMedical.patient.img" alt="Patient Image" class="patient-img" />
+            </div>
+            <div class="patient-details">
+                <h3>{{ consultation.dossierMedical.patient.nom }} {{ consultation.dossierMedical.patient.prenom }}</h3>
+                <p><strong>Date of Birth:</strong> {{consultation.dossierMedical.patient.dateNaissance }}</p>
+                <p><strong>Address:</strong> {{ consultation.dossierMedical.patient.adresse }}</p>
+                <p><strong>Phone:</strong> {{ consultation.dossierMedical.patient.tel }}</p>
+                <p><strong>Email:</strong> {{ consultation.dossierMedical.patient.email }}</p>
+                <p><strong>Health Insurance:</strong> {{consultation.dossierMedical.patient.assuranceMaladie }}</p>
+                <p><strong>Social Security Number:</strong> {{ consultation.dossierMedical.patient.numeroSecuriteSociale
+                    }}</p>
+            </div>
+        </div>
+        <div id="dossier-info" class="dossier-info">
+            <h4>Dossier Details</h4>
+            <p><strong>Dossier Number:</strong> {{ consultation.dossierMedical.numDossier }}</p>
+            <p><strong>Dossier ID:</strong> {{ consultation.dossierMedical.id }}</p>
+
+        </div>
+    </div>
+ 
+        <div  >
+            <div class="consultations">
+                
+                <div class="buttons">
+                    <button class="btn btn-added" style="margin: 5px;" data-bs-toggle="modal"
+                        data-bs-target="#addTreatmentModal"
+                        (click)="selectConsultation(consultation.id)">Add Treatment</button>
+                    <button class="btn btn-added" style="margin: 5px;" data-bs-toggle="modal"
+                        data-bs-target="#addRadioModal"
+                        (click)="selectConsultation(consultation.id)">Add Radio</button>
+                    <button class="btn btn-added" style="margin: 5px;" data-bs-toggle="modal"
+                        data-bs-target="#addNoteModal" (click)="selectConsultation(consultation.id)">Add
+                        Note</button>
+                        <button class="btn btn-added" style="margin: 5px;" data-bs-toggle="modal"
+                        data-bs-target="#addOrdonnanceModal" (click)="selectConsultation(consultation.id)">Add Ordonnance</button>
+                    
+                      </div>
+                
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ consultation.docteur.nom }} {{ consultation.docteur.prenom }}
+                                </h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ consultation.dateVisit | date }}</h6>
+                                <p class="card-text"><strong>Reason for Visit:</strong> {{ consultation.reason }}</p>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h3>Notes</h3>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item" *ngFor="let note of consultation.notes">{{ note
+                                                }}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-6">
+                                        <h3>Treatment</h3>
+
+                                        <table class="table">
+                                            <thead>
+                                                <th>Date</th>
+                                                <th>Operation</th>
+                                                <th>Prix</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let t of listTreatment">
+                                                    <td>{{t.consultations.dateVisit | date}}</td>
+                                                    <td>{{t.operation}}</td>
+                                                    <td>{{t.prixOperation}}</td>
+                                                 </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-6" >
+                                        <h3>RadioGraphie</h3>
+                                     <img *ngFor="let t of listRadio " [src]="'data:image/jpeg;base64,'+t.img">           
+                                    </div>
+                                         <div class="col-6">
+                                          <h3>Ordonnances</h3>
+                                          <table class="table table-striped">
+                                            <thead>
+                                              <tr>
+                                                <th>Patient Name</th>
+                                                <th>Doctor Name</th>
+                                                <th>Details</th>
+                                                <th>Date</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr *ngFor="let t of ord">
+                                                <td>{{ t.consultation.dossierMedical.patient.nom }} {{ t.consultation.dossierMedical.patient.prenom }}</td>
+                                                <td>{{ t.consultation.docteur.nom }} {{ t.consultation.docteur.prenom }}</td>
+                                                <td>{{ t.details }}</td>
+                                                <td>{{ t.dateOrdonnance | date: 'short' }}</td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                        </div>
+                                 </div>
+
+ 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+ 
+
+<!-- Modal for Adding Treatment -->
+<div class="modal fade" id="addTreatmentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="addTreatmentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addTreatmentModalLabel">Add Treatment</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form #form="ngForm" (ngSubmit)="addTreatmentToConsultation(form)">
+                    <label>treatment</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" [(ngModel)]="treatment.operation" name="operation" placeholder="Enter note">
+                        <input type="number" class="form-control" [(ngModel)]="treatment.prixOperation" name="prixOperation" placeholder="Enter note">
+                        <button class="btn btn-outline-secondary" type="submit" >Add Treatment</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Adding Radio -->
+<div class="modal fade" id="addRadioModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="addRadioModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addRadioModalLabel">Add Radio</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form #form="ngForm" (ngSubmit)="addRadio(form)">
+                    <div class="mb-3">
+                        <label for="radio" class="form-label">Radio</label>
+                        <input type="file" class="form-control"    (change)="selectTedFile($event)"
+                        name="img"    name="radio" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Radio</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addNoteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="addNoteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addNoteModalLabel">Add Note</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <label>Note:</label>
+                    <div class="input-group mb-3">
+                        <textarea  rows="5" class="form-control" [(ngModel)]="newNote" name="newNote"
+                            placeholder="Enter note"></textarea>
+                        <button class="btn btn-outline-secondary" type="button"
+                            (click)="addNoteToConsultation(consultation.id, newNote)">Add Note</button>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item" *ngFor="let note of consultation.notes; let i = index">
+                            {{ note }}
+                            <button type="button" class="close" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal for Adding Ordonnance -->
+<div class="modal fade" id="addOrdonnanceModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+aria-labelledby="addOrdonnanceModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="addOrdonnanceModalLabel">Add Ordonnance</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form #form="ngForm" (ngSubmit)="addOrdonnance(form)">
+                <div class="mb-3">
+                    <label for="ordonnance" class="form-label">Ordonnance</label>
+                    <textarea class="form-control" [(ngModel)]="ordonnance.details" name="newOrdonnance"
+                        rows="5" placeholder="Enter ordonnance details" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Ordonnance</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,97 @@
+
+        <!-- Page banner Section Start -->
+        <div class="section page-banner-section" style="background-image: url(assets/images/page-banner.jpg);">
+            <div class="container">
+
+                <!-- Page banner Section Start -->
+                <div class="page-banner-content">
+                    <h2 class="page-title">Login Form</h2>
+
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active">Login</li>
+                    </ul>
+                </div>
+                <!-- Page banner Section End -->
+
+            </div>
+        </div>
+        <!-- Page banner Section End -->
+
+        <!-- Login & Register Section Start -->
+        <div class="section section-padding">
+            <div class="container">
+
+                <!-- Register & Login Wrapper Start -->
+                <div class="register-login-wrapper">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 col-xl-5">
+                            <!-- Register & Login Form Start -->
+                            <div class="register-login-form">
+                                <h3 class="title">Login <span>Now</span></h3>
+                                <p style="color: red;">{{message}}</p>
+                                <div class="form-wrapper">
+                                    <form #form="ngForm" (ngSubmit)="login(form)">
+                                        <!-- Single Form Start -->
+                                        <div class="single-form">
+                                            <input type="email" ngModel name="email" placeholder="Username or Email">
+                                        </div>
+                                        <!-- Single Form End -->
+                                        <!-- Single Form Start -->
+                                        <div class="single-form">
+                                            <input type="password" ngModel name="password" placeholder="Password">
+                                        </div>
+                                        <!-- Single Form End -->
+                                        <!-- Single Form Start -->
+                                        <div class="single-form">
+                                            <button class="btn btn-primary btn-hover-dark w-100" type="submit">Login</button>
+                                         </div>
+                                        <!-- Single Form End -->
+                                        <p><a href="#">Lost your password?</a></p>
+                                        <p>No account? <a routerLink="/register">Create one here.</a></p>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- Register & Login Form End -->
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Register & Login Wrapper End -->
+
+            </div>
+        </div>
+        <!-- Login & Register Section End -->
+
+        <!-- Download App Start -->
+        <div class="section section-padding download-section">
+
+            <img class="shape-01" src="assets/images/shape/shape-7.png" alt="Shape">
+            <img class="shape-02" src="assets/images/shape/shape-8.png" alt="Shape">
+
+            <div class="container">
+
+                <!-- Download App Wrapper Start -->
+                <div class="download-app-wrapper">
+
+                    <!-- Section Title Start -->
+                    <div class="section-title shape-none">
+                        <h6 class="sub-title">mobile app available</h6>
+                        <h2 class="main-title">Download mobile app. and start class anytime.</h2>
+                    </div>
+                    <!-- Section Title End -->
+
+                    <!-- Download App Button End -->
+                    <div class="download-app-btn">
+                        <ul class="app-btn">
+                            <li><a href="#"><img src="assets/images/play-store.jpg" alt="Play Store"></a></li>
+                            <li><a href="#"><img src="assets/images/app-store.jpg" alt="App Store"></a></li>
+                        </ul>
+                    </div>
+                    <!-- Download App Button End -->
+
+                </div>
+                <!-- Download App Wrapper End -->
+
+            </div>
+        </div>

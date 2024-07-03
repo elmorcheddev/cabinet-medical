@@ -1,0 +1,549 @@
+ 
+
+ 
+
+.carousel-caption.show {
+  opacity: 1; /* Show caption on hover */
+}
+
+.custom-carousel:hover .carousel-caption {
+  opacity: 1; /* Show caption on hover */
+}
+
+.custom-carousel .carousel-control-prev-icon,
+.custom-carousel .carousel-control-next-icon {
+  background-image: none; /* Remove default carousel control icons */
+  transition: transform 0.2s ease; /* Add transition for smooth hover effect */
+}
+ 
+
+@keyframes imageMovement {
+  0% {
+      transform: translateY(0);
+  }
+  100% {
+      transform: translateY(-10px); /* Move the image up */
+  }
+}
+
+.carousel-img.active {
+  transform: scale(1.1); /* Scale up the active slide */
+  opacity: 1; /* Show active slide */
+}
+ 
+ 
+
+.swiper-slide {
+  position: relative; /* Ensure relative positioning for absolute children */
+}
+
+.slider-content-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  text-align: left;
+  margin-left: 10rem;
+  margin-top: -70px;
+  z-index: 1;  
+}
+.slider-social {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  width: 100%;
+}
+@media only screen and (max-width: 575px) {
+  .slider-social {
+    bottom: 80px;
+  }
+}
+.slider-social .social-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.slider-social .social-wrapper p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #2c241b;
+  white-space: nowrap;
+  padding-right: 5px;
+}
+@media only screen and (max-width: 575px) {
+  .slider-social .social-wrapper p {
+    font-size: 14px;
+  }
+}
+.slider-social .social-wrapper .social {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.slider-social .social-wrapper .social li {
+  margin-left: 15px;
+}
+@media only screen and (max-width: 575px) {
+  .slider-social .social-wrapper .social li {
+    margin-left: 10px;
+  }
+}
+.slider-social .social-wrapper .social li a {
+  width: 45px;
+  height: 45px;
+  line-height: 43px;
+  text-align: center;
+  border: 1px solid rgba(10, 77, 60, 0.15);
+  border-radius: 50%;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+@media only screen and (max-width: 575px) {
+  .slider-social .social-wrapper .social li a {
+    width: 35px;
+    height: 35px;
+    line-height: 33px;
+  }
+}
+.slider-social .social-wrapper .social li a:hover {
+  background-color: #0a4d3c;
+  border-color: #0a4d3c;
+  color: #fff;
+}
+
+.carousel-img {
+  width: 100%;
+  object-fit: auto;
+  opacity: 0.8;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  animation: imageMovement 8s infinite alternate;
+}
+
+@keyframes imageMovement {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+ 
+
+
+.dental-tourism-services-area {
+  background-color: #002345;
+  overflow: hidden
+}
+
+.dental-tourism-services-area .section-title-warp .sub-title {
+  background-color: #1dbfcc;
+  color: #fff
+}
+
+.dental-tourism-services-area .section-title-warp h2 {
+  color: #fff
+}
+
+.dental-tourism-services-area .section-warp-btn .default-btn {
+  background-color: #1dbfcc
+}
+
+.dental-tourism-services-area .section-warp-btn .default-btn:hover {
+  background-color: #f4e2df
+}
+
+.dental-tourism-services-area .container-fluid {
+  overflow: hidden;
+  left: calc((100% - 1320px)/2);
+  position: relative
+}
+
+.dental-tourism-services-card .services-image {
+  position: relative
+}
+
+.dental-tourism-services-card .services-image .icon {
+  position: absolute;
+  left: 25px;
+  bottom: 25px
+}
+
+.dental-tourism-services-card .services-image .icon i {
+  display: inline-block;
+  height: 75px;
+  width: 75px;
+  line-height: 75px;
+  background-color: #1dbfcc;
+  text-align: center;
+  font-size: 40px;
+  color: #fff;
+  border-radius: 50px;
+  transition: .6s
+}
+
+.dental-tourism-services-card .services-content {
+  margin-top: 25px
+}
+
+.dental-tourism-services-card .services-content h3 {
+  font-size: 24px;
+  font-family: heebo, sans-serif;
+  font-weight: 500
+}
+
+.dental-tourism-services-card .services-content h3 a {
+  color: #fff
+}
+
+.dental-tourism-services-card:hover .services-image .icon i {
+  background-color: #fff;
+  color: #f4e2df
+}
+
+.dental-tourism-services-card:hover .services-content h3 a {
+  color: #f4e2df
+}
+
+.dental-tourism-choose-content span {
+  display: inline-block;
+  padding: 8px 18px;
+  background-color: #f4e2df;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 30px;
+  margin-bottom: 25px
+}
+
+.dental-tourism-choose-content h3 {
+  font-size: 40px;
+  margin-bottom: 15px;
+  font-family: heebo, sans-serif
+}
+
+.dental-tourism-choose-content p {
+  margin-bottom: 0;
+  color: #486683
+}
+
+.dental-tourism-choose-content .choose-inner-content {
+  margin-top: 25px;
+  position: relative;
+  padding-left: 35px
+}
+
+.dental-tourism-choose-content .choose-inner-content i {
+  font-size: 20px;
+  color: #f4e2df;
+  position: absolute;
+  left: 0;
+  top: 2px
+}
+
+.dental-tourism-choose-content .choose-inner-content h4 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 12px
+}
+
+.dental-tourism-choose-content .choose-inner-content p {
+  margin-bottom: 0;
+  color: #f4e2df
+}
+
+.dental-tourism-choose-image {
+  position: relative;
+  text-align: center
+}
+
+.dental-tourism-choose-image .video-btn {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%)
+}
+
+.dental-tourism-choose-image .video-btn i {
+  display: inline-block;
+  height: 80px;
+  width: 80px;
+  line-height: 80px;
+  background-color: #f4e2df;
+  color: #fff;
+  border-radius: 50px;
+  font-size: 65px;
+  transition: .6s
+}
+
+.dental-tourism-choose-image .video-btn i:hover {
+  background-color: #f4e2df
+}
+
+.single-services {
+  margin-bottom: 30px;
+  transition: .6s
+}
+
+.single-services .services-image {
+  position: relative;
+  overflow: hidden
+}
+
+.single-services .services-image img {
+  border-radius: 10px 10px 0 0;
+  transition: .6s
+}
+
+.single-services .services-image .icon {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  transition: .6s
+}
+
+.single-services .services-image .icon a i {
+  display: inline-block;
+  height: 75px;
+  width: 75px;
+  line-height: 75px;
+  background-color: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .07);
+  color: #f4e2df;
+  font-size: 45px;
+  text-align: center;
+  border-radius: 50px;
+  transition: .6s
+}
+
+.single-services .services-content {
+  background-color: #fff;
+  box-shadow: 0 0 1.25rem rgba(108, 118, 134, .1);
+  padding: 35px 30px;
+  border-bottom: 1px solid #f4e2df;
+  border-radius: 0 0 10px 10px;
+  transition: .6s
+}
+
+.single-services .services-content h3 {
+  font-size: 25px;
+  margin-bottom: 12px;
+  font-weight: 500
+}
+
+.single-services .services-content h3 a {
+  color: #222
+}
+
+.single-services .services-content p {
+  font-size: 15px;
+  transition: .6s
+}
+
+.single-services:hover {
+  transform: translateY(-10px)
+}
+
+.single-services:hover .services-image img {
+  transform: rotate(2deg) scale(1.2)
+}
+
+.single-services:hover .services-image .icon i {
+  background-color: #f4e2df;
+  color: #fff
+}
+
+.single-services:hover .services-content {
+  background-color: #f4e2df
+}
+
+.single-services:hover .services-content h3 a {
+  color: #fff
+}
+
+.single-services:hover .services-content p {
+  color: #fff
+}
+
+.single-services-box {
+  text-align: center;
+  margin-bottom: 30px;
+  background-color: #fff;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, .1);
+  padding: 30px;
+  border-radius: 10px;
+  transition: .6s
+}
+
+.single-services-box .icon {
+  margin-bottom: 25px
+}
+
+.single-services-box .icon i {
+  display: inline-block;
+  height: 80px;
+  width: 80px;
+  line-height: 80px;
+  font-size: 45px;
+  background-color: #f4e2df;
+  color: #fff;
+  text-align: center;
+  border-radius: 15px
+}
+
+.single-services-box h3 {
+  font-size: 25px;
+  font-weight: 500;
+  margin-bottom: 15px
+}
+
+.single-services-box h3 a {
+  color: #222
+}
+
+.single-services-box h3 a:hover {
+  color: #f4e2df
+}
+
+.single-services-box p {
+  font-size: 15px;
+  margin-bottom: 20px
+}
+
+.single-services-box .services-btn {
+  display: inline-block;
+  background-color: transparent;
+  border: 1px solid #f4e2df;
+  color: #f4e2df;
+  padding: 15px 35px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: .6s;
+  border-radius: 5px
+}
+
+.single-services-box .services-btn:hover {
+  background-color: #f4e2df;
+  color: #fff
+}
+
+.single-services-box:hover {
+  transform: translateY(-10px)
+}
+
+.single-services-box:hover .icon i {
+  animation: bounce 1s
+}
+
+.single-services-item {
+  margin-bottom: 30px;
+  transition: .6s;
+  background-color: #fff;
+  box-shadow: 0 0 1.25rem rgba(108, 118, 134, .1);
+  padding: 10px;
+  padding-bottom: 0;
+  border-radius: 10px
+}
+
+.single-services-item .services-image {
+  position: relative;
+  overflow: hidden
+}
+
+.single-services-item .services-image img {
+  border-radius: 10px;
+  transition: .6s
+}
+
+.single-services-item .services-image .icon {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  transition: .6s
+}
+
+.single-services-item .services-image .icon a i {
+  display: inline-block;
+  height: 75px;
+  width: 75px;
+  line-height: 75px;
+  background-color: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .07);
+  color: #f4e2df;
+  font-size: 45px;
+  text-align: center;
+  border-radius: 50px;
+  transition: .6s
+}
+
+.single-services-item .services-content {
+  padding: 35px 20px;
+  text-align: center
+}
+
+.single-services-item .services-content h3 {
+  font-size: 25px;
+  margin-bottom: 12px;
+  font-weight: 500
+}
+
+.single-services-item .services-content h3 a {
+  color: #222
+}
+
+.single-services-item .services-content p {
+  font-size: 15px;
+  margin-bottom: 20px
+}
+
+.single-services-item .services-content .default-btn {
+  width: 100%;
+  border-radius: 50px
+}
+
+.single-services-item:hover {
+  transform: translateY(-10px)
+}
+
+.single-services-item:hover .services-image img {
+  transform: rotate(2deg) scale(1.2)
+}
+
+.single-services-item:hover .services-image .icon i {
+  background-color: #f4e2df;
+  color: #fff
+}
+.dental-tourism-services-card .services-image {
+  position: relative
+}
+
+.dental-tourism-services-card .services-image .icon {
+  position: absolute;
+  left: 25px;
+  bottom: 25px
+}
+
+.dental-tourism-services-card .services-image .icon i {
+  display: inline-block;
+  height: 75px;
+  width: 75px;
+  line-height: 75px;
+  background-color: #f4e2df;
+  text-align: center;
+  font-size: 40px;
+  color: #fff;
+  border-radius: 50px;
+  transition: .6s
+}
+
+.skin-care-blog-area .section-title-warp .sub-title {
+  background-color: #f4e2df;
+  color: #fff
+}

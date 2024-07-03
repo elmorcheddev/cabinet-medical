@@ -1,0 +1,279 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .dossier-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .dossier-header h2 {
+    margin: 0;
+    color: #333;
+  }
+  
+  .top-sections {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .patient-info,
+  .dossier-info {
+    flex: 1;
+  }
+  
+  .patient-info {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .patient-img-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 10%;
+    overflow: hidden;
+  }
+  
+  .patient-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .patient-details {
+    margin-left: 20px;
+  }
+  
+  .patient-details h3 {
+    margin: 0;
+    color: #333;
+  }
+  
+  .patient-details p {
+    margin: 5px 0;
+    color: #666;
+  }
+  
+  .dossier-info {
+    margin-left: 20px;
+  }
+  
+  .dossier-info h4 {
+    margin: 0 0 10px 0;
+    color: #333;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .buttons button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .buttons button:hover {
+    background-color: #0056b3;
+  }
+  
+  .tab-container {
+    margin-top: 20px;
+  }
+  
+  .tab-menu {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    margin: 0 0 20px 0;
+    border-bottom: 2px solid #ddd;
+  }
+  
+  .tab-link {
+    cursor: pointer;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 5px 5px 0 0;
+    background-color: #f4f4f4;
+    transition: background-color 0.3s;
+  }
+  
+  .tab-link.active {
+    background-color: #007bff;
+    color: #fff;
+    border-bottom: 2px solid #007bff;
+  }
+  
+  .tab-content {
+    display: none;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  
+  .tab-content.active {
+    display: block;
+  }
+  
+  .tab-content h4 {
+    margin-top: 0;
+  }
+  
+  .tab-content button {
+    float: right;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin-top: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .tab-content button:hover {
+    background-color: #218838;
+  }
+  
+  .tab-content .item {
+    margin-bottom: 20px;
+  }
+  
+  .tab-content .item p {
+    margin: 5px 0;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Patient Info */
+#patient-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.patient-img-container {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.patient-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+}
+
+.patient-details {
+    flex: 3;
+}
+
+.patient-details h3 {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.patient-details p {
+    margin: 5px 0;
+    color: #555;
+}
+
+/* Modal Header */
+.modal-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.modal-title {
+    margin: 0;
+}
+
+/* Form Styles */
+form {
+    margin: 20px 0;
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+}
+
+legend {
+    padding: 0 10px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+  

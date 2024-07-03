@@ -1,0 +1,141 @@
+<div class="page-header">
+  <div class="page-title">
+    <h4>Product List</h4>
+    <h6>View/Search Product</h6>
+  </div>
+  <div class="page-btn">
+    <a class="btn btn-added" data-bs-toggle="modal" data-bs-target="#exampleModalLong">
+      <img src="assets/img/icons/plus.svg" class="me-1" alt="img">Add Product
+    </a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <div class="table-top">
+      <div class="search-set">
+        <div class="search-path">
+          <a class="btn btn-filter" id="filter_search">
+            <img src="assets/img/icons/filter.svg" alt="img">
+            <span><img src="assets/img/icons/closes.svg" alt="img"></span>
+          </a>
+        </div>
+        <div class="search-input">
+          <a class="btn btn-searchset"><img src="assets/img/icons/search-white.svg" alt="img"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table datanew">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of productList" [ngClass]="{'low-stock': p.qteProdcut === p.minStock}">
+            <td><img [src]="'data:image/jpeg;base64,' + p.img" alt="product image" width="50"></td>
+            <td>{{ p.nomProduct }}</td>
+            <td>{{ p.categoriesProduit.nomCat }}</td>
+            <td>{{ p.prixProduct }}</td>
+            <td>{{ p.qteProdcut }}</td>
+            <td>
+              <a class="me-3" data-bs-toggle="modal" data-bs-target="#exampleModalLong" (click)="editProduct(p)">
+                <img src="assets/img/icons/edit.svg" alt="img">
+              </a>
+              <a class="me-3 confirm-text" href="javascript:void(0);" (click)="deleteProduct(p.id)">
+                <img src="assets/img/icons/delete.svg" alt="img">
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalLong" tabindex="-1" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{{ isEditMode ? 'Edit Product' : 'Add Product' }}</h5>
+        <button type="button" (click)="resetForm(form)" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #form="ngForm" (ngSubmit)="saveProduct(form)">
+          <div class="row">
+            <div class="col-lg-6 col-sm-6 col-12" *ngIf="!isEditMode">
+              <div class="form-group">
+                <label>Image</label>
+                <input type="file" class="form-control" name="image" (change)="onFileSelected($event)" required>
+                <div *ngIf="form.controls?.['image']?.touched && form.controls?.['image']?.invalid" class="text-danger">
+                  Image is required.
+                </div>
+                <p>{{message}}</p>
+              </div>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-12">
+              <div class="form-group">
+                <label>Product Name</label>
+                <input type="text" [(ngModel)]="product.nomProduct" name="nomProduct" class="form-control" required>
+                <div *ngIf="form.controls?.['nomProduct']?.touched && form.controls?.['nomProduct']?.invalid" class="text-danger">
+                  Product Name is required.
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-12">
+              <div class="form-group">
+                <label>Price</label>
+                <input type="number" [(ngModel)]="product.prixProduct" name="prixProduct" class="form-control" required>
+                <div *ngIf="form.controls?.['prixProduct']?.touched && form.controls?.['prixProduct']?.invalid" class="text-danger">
+                  Price is required.
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-12">
+              <div class="form-group">
+                <label>Quantity</label>
+                <input type="number" [(ngModel)]="product.qteProdcut" name="qteProdcut" class="form-control" required>
+                <div *ngIf="form.controls?.['qteProdcut']?.touched && form.controls?.['qteProdcut']?.invalid" class="text-danger">
+                  Quantity is required.
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-12">
+              <div class="form-group">
+                <label>MIN Quantity</label>
+                <input type="number" [(ngModel)]="product.minStock" name="minStock" class="form-control" required>
+                <div *ngIf="form.controls?.['minStock']?.touched && form.controls?.['minStock']?.invalid" class="text-danger">
+                  MIN Quantity is required.
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-12">
+              <div class="form-group">
+                <label>Category</label>
+                <select class="form-control" [(ngModel)]="product.categoriesProduit.id" name="categoriesProduit" required>
+                  <option *ngFor="let c of listCategories" [value]="c.id">{{ c.nomCat }}</option>
+                </select>
+                <div *ngIf="form.controls?.['categoriesProduit']?.touched && form.controls?.['categoriesProduit']?.invalid" class="text-danger">
+                  Category is required.
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <button type="submit" class="btn btn-primary me-2">{{ isEditMode ? 'Update Product' : 'Add Product' }}</button>
+              <button type="reset" class="btn btn-danger" (click)="resetForm(form)">Cancel</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+

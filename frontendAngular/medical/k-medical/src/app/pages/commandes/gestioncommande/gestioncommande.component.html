@@ -1,0 +1,114 @@
+<div class="container">
+    <h1 class="text-center" >Gestion de Commandes </h1>
+             <div class="row"> 
+                 <mat-grid-list cols="2" rowHeight="2:1" class="w-100">
+           <div class="row mb-3">
+             <div class="col-4 ">
+                 <h3 class="mb-3">Information  assistant</h3> <br>
+                <b  class="mb-3">Nom et Prenom :</b>  <p>{{commande.assistant.nom +' '+ commande.assistant.prenom}}</p>
+                 <b  class="mb-3">Numero de Telephone :</b> <p>{{commande.assistant.email}}</p>
+              
+             </div>
+             <div class="col-4">
+                 
+             </div>
+                <div class="col-4 ">
+    
+                <h3 class="mb-3"> Information  Commande</h3><br>
+                     <b class="mb-3"> Numero Commande</b>	<p>{{commande.id}}</p>	
+                     <b class="mb-3">  Date Commande</b>	<p>{{commande.orderDate}}</p> 
+                      <b class="mb-3">  Total Prix Commande</b>	<p>{{commande.totalprix}}</p>  
+     
+              </div>
+              
+          </div>
+      
+    </mat-grid-list>
+     <hr>
+      <div class="card-body  w-100">
+                          <form #form="ngForm"  (ngSubmit)="addLgCommande(form)">
+                              <div class="row">
+                                      <div class="col-4">
+                                  <div class="mb-3">
+                              <label class="form-label" for="basic-default-fullname">Code  Commande</label>
+                              <input type="text" value="{{lgcmd.commande.id}}"  [(ngModel)]="lgcmd.commande.id"  name="commande" class="form-control" id="basic-default-fullname" placeholder="John Doe" />
+                            </div>
+                            </div>
+                             <div class="col-4">
+                            <div class="mb-3">
+                              <label class="form-label" for="basic-default-fullname">Quantityie</label>
+                              <input type="number" [(ngModel)]="lgcmd.quantity"   name="quantity" class="form-control" id="basic-default-fullname" placeholder="John Doe" />
+                            </div>
+                            </div>
+                            <div class="col-4">
+                                  <div class="mb-3">
+                              <label class="form-label" for="basic-default-fullname">Article </label>
+                              <select type="text" [(ngModel)]="lgcmd.product.id"  name="article" class="form-control" id="basic-default-fullname">
+                                  <option *ngFor="let art of articleList" value="{{art.id}}">
+                                      {{art.nomProduct}}
+                                    </option>
+                                   
+                                  </select>
+                            </div>
+                            </div>
+                          
+                              </div>  
+                              <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Ajouter Ligne Commandes</button>
+          </div>
+                        
+                            
+                          </form>
+                        </div>
+     
+        <h1 class="text-center " >Liste  de Ligne  Commandes <b> {{commande.assistant.nom +' '+ commande.assistant.prenom}}</b> </h1>		 
+                 
+                 <div class="container">
+     
+        <div class="card">
+                    <div class="table-responsive text-nowrap">
+                      <table class="table p-3">
+                        <thead>
+                          <tr class="text-center">
+                            <th>Id Ligne Commande</th>     
+                             <th>Quantity</th>
+                               <th>Prix Unitaire </th>
+                              <th>Prix Total  </th>
+                               <th>Article</th>
+                               <th>Code Article</th>
+                            <th>Actions</th>
+                          
+                          </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                          <tr    class="text-center" *ngFor="let lg of listLigneCommande">
+                            <td> {{lg.id_ordDetails}}</td>
+                            <td> {{lg.quantity}} </td>
+                            <td>{{lg.product.prixProduct}}</td>
+                             <td> {{lg.totalPrice}} </td>
+                              <td>{{lg.product.nomProduct}} </td>
+                               <td>{{lg.product.id}} </td>
+                            <td>					                          
+                          <button type="button" (click)="findByID(lg.id_ordDetails)" class="btn btn-basic" data-bs-toggle="modal" data-bs-target="#staticBackdrop"  >
+                              <img src="../../../../assets/img/icons/edit-5.svg"  class="text-end" width="30" height="30">
+                          </button>
+                                 <button class="btn btn-basic"  >
+                              <img src="../../../../assets/img/icons/delete.svg" class="text-end" width="30" height="30">
+                          </button>                          
+                            </td>
+                            <td>
+                                                          
+                            </td>
+                          </tr>
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+    </div>
+      
+    
+    
+    
+                      </div>
+    </div>

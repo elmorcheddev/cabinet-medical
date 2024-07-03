@@ -1,0 +1,163 @@
+<div class="section page-banner-section" style="background-image: url(assets/images/page-banner.jpg);">
+    <div class="container">
+        <div class="page-banner-content">
+            <h2 class="page-title">Registration Form</h2>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Register</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="section section-padding">
+    <div class="container">
+        <div class="register-login-wrapper">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 col-xl-5">
+                    <div class="register-login-form">
+                        <h3 class="title">Registration <span>Now</span></h3>
+                        <div class="form-wrapper">
+                            <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+                                <p style="color: red;">{{message}}</p>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="single-form">
+                                            <label for="nom">First Name</label>
+                                            <input type="text" id="nom" name="nom" [(ngModel)]="patient.nom" placeholder="Name" required pattern="^[^0-9]*$" #nom="ngModel">
+                                            <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="text-danger">
+                                                <div *ngIf="nom.errors?.['required']">Name is required.</div>
+                                                <div *ngIf="nom.errors?.['pattern']">Name must not contain numbers.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="single-form">
+                                            <label for="prenom">Last  Name</label>
+                                            <input type="text" id="prenom" name="prenom" [(ngModel)]="patient.prenom" placeholder="First Name" required pattern="^[^0-9]*$" #prenom="ngModel">
+                                            <div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)" class="text-danger">
+                                                <div *ngIf="prenom.errors?.['required']">First Name is required.</div>
+                                                <div *ngIf="prenom.errors?.['pattern']">First Name must not contain numbers.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="single-form">
+                                            <label for="adresse">Address</label>
+                                            <input type="text" id="adresse" name="adresse" [(ngModel)]="patient.adresse" placeholder="Address" required #adresse="ngModel">
+                                            <div *ngIf="adresse.invalid && (adresse.dirty || adresse.touched)" class="text-danger">
+                                                <div *ngIf="adresse.errors?.['required']">Address is required.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="single-form">
+                                            <label for="tel">Phone</label>
+                                            <input type="text" id="tel" name="tel" [(ngModel)]="patient.tel" placeholder="Phone" required #tel="ngModel">
+                                            <div *ngIf="tel.invalid && (tel.dirty || tel.touched)" class="text-danger">
+                                                <div *ngIf="tel.errors?.['required']">Phone number is required.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="single-form">
+                                            <label for="cin">CIN</label>
+                                            <input 
+                                                type="text" 
+                                                id="cin" 
+                                                name="cin" 
+                                                maxlength="8" 
+                                                minlength="8" 
+                                                pattern="\d{8}" 
+                                                [(ngModel)]="patient.cin" 
+                                                placeholder="CIN" 
+                                                required 
+                                                #cin="ngModel"
+                                            >
+                                            <div *ngIf="cin.invalid && (cin.dirty || cin.touched)" class="text-danger">
+                                                <div *ngIf="cin.errors?.['required']">CIN is required.</div>
+                                                <div *ngIf="cin.errors?.['pattern']">CIN must be exactly 8 digits.</div>
+                                                <div *ngIf="cin.errors?.['maxlength']">Max length is 8 digits.</div>
+                                                <div *ngIf="cin.errors?.['minlength']">Min length is 8 digits.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-4">
+                                        <div class="single-form">
+                                            <label for="email">Email</label>
+                                            <input type="email" id="email" name="email" [(ngModel)]="patient.email" placeholder="Email" required email #email="ngModel">
+                                            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+                                                <div *ngIf="email.errors?.['required']">Email is required.</div>
+                                                <div *ngIf="email.errors?.['email']">Invalid email address.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="single-form">
+                                            <label for="password">Password</label>
+                                            <input type="password" id="password" name="password" [(ngModel)]="patient.password" placeholder="Password" required #password="ngModel">
+                                            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+                                                <div *ngIf="password.errors?.['required']">Password is required.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="single-form">
+                                            <label for="confirmPassword">Confirm Password</label>
+                                            <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="patient.confirmPasswrod" placeholder="Confirm Password" required #confirmPassword="ngModel">
+                                            <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" class="text-danger">
+                                                <div *ngIf="confirmPassword.errors?.['required']">Confirm Password is required.</div>
+                                            </div>
+                                            <div *ngIf="registerForm.submitted && patient.password !== patient.confirmPasswrod" class="text-danger">
+                                                Passwords do not match.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="single-form">
+                                            <label for="dateNaissance">Date of Birth</label>
+                                            <input type="date" id="dateNaissance" name="dateNaissance" [(ngModel)]="patient.dateNaissance" placeholder="Date of Birth" required #dateNaissance="ngModel">
+                                            <div *ngIf="dateNaissance.invalid && (dateNaissance.dirty || dateNaissance.touched)" class="text-danger">
+                                                <div *ngIf="dateNaissance.errors?.['required']">Date of Birth is required.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="single-form">
+                                            <label for="assuranceMaladie">Health Insurance</label>
+                                            <input type="text" id="assuranceMaladie" name="assuranceMaladie" [(ngModel)]="patient.assuranceMaladie" placeholder="Health Insurance" required #assuranceMaladie="ngModel">
+                                            <div *ngIf="assuranceMaladie.invalid && (assuranceMaladie.dirty || assuranceMaladie.touched)" class="text-danger">
+                                                <div *ngIf="assuranceMaladie.errors?.['required']">Health Insurance is required.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="single-form">
+                                            <label for="numeroSecuriteSociale">Social Security Number</label>
+                                            <input type="text" id="numeroSecuriteSociale" name="numeroSecuriteSociale" [(ngModel)]="patient.numeroSecuriteSociale" placeholder="Social Security Number" required #numeroSecuriteSociale="ngModel">
+                                            <div *ngIf="numeroSecuriteSociale.invalid && (numeroSecuriteSociale.dirty || numeroSecuriteSociale.touched)" class="text-danger">
+                                                <div *ngIf="numeroSecuriteSociale.errors?.['required']">Social Security Number is required.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="single-form">
+                                            <label for="file">Upload Document</label>
+                                            <input type="file" id="file" (change)="onFileChange($event)">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="single-form">
+                                    <button class="btn btn-primary w-100" type="submit" [disabled]="registerForm.invalid">Create an account</button>
+                                </div>
+                                <p>Already have an account? <a routerLink="/login">Log in instead!</a></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

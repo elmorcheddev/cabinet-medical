@@ -1,0 +1,205 @@
+<section class="doctor-area pt-100 pb-70">
+    <div class="container">
+        <div class="section-title">
+            <span class="sub-title">
+                <i class="flaticon-hashtag-symbol"></i>
+                Our Dentist
+            </span>
+            <h2>Our Specialized and Experienced Dentist</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-12">
+                <aside class="widget-area">
+                    <div class="widget widget_search">
+                        <form class="search-form">
+                            <input type="search" class="search-field" placeholder="Search...">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                    <div class="widget widget_grin_posts_thumb">
+                        <h3 class="widget-title">Filters Speciality </h3>
+                        
+                        <article class="item" *ngFor="let s of listSpec">
+                            <div class="info">
+                                <span (click)="filterBySpecialite(s.nomSpecialite)">
+                                    <i class="fa fa-book"></i> {{s.nomSpecialite}}
+                                </span>
+                            </div>
+                        </article>
+                    </div>
+                </aside>
+            </div>
+         
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-lg-3 col-md-12" *ngFor="let d of listDocteur">
+                        <div class="single-doctor">
+                            <a href="dentist-details.html">
+                                <img [src]="'data:image/jpeg;base64,' + d.img" alt="{{d.img}}" class="img-fluid">
+                            </a>
+                            <div class="doctor-content">
+                                <h3>
+                                    <a (click)="goToDoctorDetails(d.id)">{{d.nom + ' '+d.prenom}}</a>
+                                </h3>
+                                <span>{{d.specialite.nomSpecialite}}</span>
+                                <div class="share-link">
+                                    <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a>
+                                    <a href="https://twitter.com/?lang=en" target="_blank"><i class="fa fa-twitter"></i></a>
+                                    <a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                                    <a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram"></i></a>
+                                </div>
+                                <div class="button-group position-absolute top-0 end-0 mt-3 me-3">
+                                    <button *ngIf="isLogedIn" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="sendAppoinment(d.id)">
+                                        <i class="fa fa-calendar"></i> Make Appointment
+                                    </button>
+                                    <button *ngIf="!isLogedIn" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                        <i class="fa fa-calendar"></i> Make Appointment
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modals and other HTML remain unchanged -->
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Appointment Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="doctor d-flex align-items-start position-relative h-100">
+                                <div class="doctor-image">
+                                    <a href="dentist-details.html">
+                                        <img [src]="'data:image/jpeg;base64,' + docteur.img" alt="{{docteur.img}}"
+                                            class="img-fluid">
+                                    </a>
+                                </div>
+                                <div class="doctor-content ms-3">
+                                    <h3>
+                                        <a href="dentist-details.html">{{docteur.nom + ' ' + docteur.prenom |
+                                            titlecase}}</a>
+                                    </h3>
+                                    <span>{{docteur.specialite.nomSpecialite}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="doctor d-flex align-items-start position-relative h-100">
+                                <div class="doctor-image">
+                                    <a href="dentist-details.html">
+                                        <img [src]="'data:image/jpeg;base64,' + utilisateur.img"
+                                            alt="{{utilisateur.img}}" class="img-fluid">
+                                    </a>
+                                </div>
+                                <div class="doctor-content ms-3">
+                                    <h3>
+                                        <a href="dentist-details.html">{{utilisateur.nom + ' ' + utilisateur.prenom |
+                                            titlecase}}</a>
+                                    </h3>
+                                    <span>{{utilisateur.adresse}}</span><br>
+                                    <span>{{utilisateur.email}}</span><br>
+                                    <span>{{utilisateur.tel}}</span><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" [(ngModel)]="docteur.id" name="docteur" value="{{docteur.id}}">
+                    <input type="hidden" [(ngModel)]="utilisateur.id" name="patient" value="{{utilisateur.id}}">
+                    <div class="mb-3">
+                        <label for="appointmentDate" class="form-label">Appointment Date</label>
+                        <div class="calendar-container">
+                            <button class="calendar-nav" (click)="changeWeek(-7)">‹</button>
+                            <span class="date-display">{{ selectedDate | date:'MMMM yyyy' }}</span>
+                            <button class="calendar-nav" (click)="changeWeek(7)">›</button>
+                        </div>
+                        <table class="calendar">
+                            <thead>
+                                <tr>
+                                    <th *ngFor="let day of ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']">{{ day }}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td *ngFor="let day of calendarWeek" [ngClass]="{
+                        'calendar-day': true,
+                        'selected': isSameDay(day)    ,
+                        'active-day': isSelectedDay(day),
+                        'disabled': isPastDay(day) || isSunday(day),
+                                            
+                      }" (click)="selectDate(day)">
+                                        <div class="day-number">{{ day.getDate() }}</div>
+                                        <div class="day-name">{{ getDayName(day) }}</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" (click)="envoyerAppoinment()" class="btn btn-primary">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Appointment Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-xl-5">
+                        <!-- Register & Login Form Start -->
+                        <div class="register-login-form">
+                            <h3 class="title">Login <span>Now</span></h3>
+
+                            <div class="form-wrapper">
+                                <form #form="ngForm" (ngSubmit)="login(form)">
+                                    <!-- Single Form Start -->
+                                    <div class="single-form">
+                                        <input type="email" ngModel name="email" placeholder="Username or Email">
+                                    </div>
+                                    <!-- Single Form End -->
+                                    <!-- Single Form Start -->
+                                    <div class="single-form">
+                                        <input type="password" ngModel name="password" placeholder="Password">
+                                    </div>
+                                    <!-- Single Form End -->
+                                    <!-- Single Form Start -->
+                                    <div class="single-form">
+                                        <button class="btn btn-primary btn-hover-dark w-100"
+                                            type="submit">Login</button>
+                                     </div>
+                                    <!-- Single Form End -->
+                                    <p><a href="#">Lost your password?</a></p>
+                                    <p>No account? <a routerLink="/register">Create one here.</a></p>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Register & Login Form End -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<!-- Modal Structure -->
+<!-- Modal Structure -->
+<div class="modal fade" id="invoiceModal" tabindex="-1" aria-labelledby="invoiceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="invoiceModalLabel">Invoice Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Invoice Number:</strong> {{ selectedInvoice?.id }}</p>
+                <p><strong>Date Issued:</strong> {{ selectedInvoice?.dateIssued }}</p>
+                <p><strong>Patient Name:</strong> {{ selectedInvoice?.consultation.dossierMedical.patient.nom + ' ' + selectedInvoice?.consultation.dossierMedical.patient.prenom }}</p>
+                <p><strong>Total Amount:</strong> {{ selectedInvoice?.totalAmount + selectedInvoice?.prixConsultation }} DT</p>
+                <!-- Add more details as needed -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="printInvoice()">Print</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Your Table Structure -->
+<div class="card">
+    <div class="card-body">
+        <h2 class="mb-4">Invoice Table</h2>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Numéro de Facture</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Nom du Patient</th>
+                    <th scope="col">Montant Total</th>
+                    <th scope="col">Statut</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let invoice of invoices">
+                    <td>{{ invoice.id }}</td>
+                    <td>{{ invoice.dateIssued }}</td>
+                    <td>{{ invoice.consultation.dossierMedical.patient.nom + ' ' + invoice.consultation.dossierMedical.patient.prenom }}</td>
+                    <td>{{ invoice.totalAmount + invoice.prixConsultation }} DT</td>
+                    <td>Confirmed</td>
+                    <td>
+                        <a class="me-3" (click)="openInvoiceModal(invoice)" data-bs-toggle="modal" data-bs-target="#invoiceModal">
+                            <img src="../../../assets/img/icons/eye.svg" alt="img">
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

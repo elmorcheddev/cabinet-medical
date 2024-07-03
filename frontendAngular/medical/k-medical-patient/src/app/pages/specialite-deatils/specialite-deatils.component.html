@@ -1,0 +1,49 @@
+<section class="services-details-area ptb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="services-details-image">
+                    <img [src]="'data:image/jpeg;base64,' + selectedSpec.img" alt="{{selectedSpec.img}}" alt="image">
+                </div>
+                <div class="services-details-content">
+                    <h3>{{selectedSpec.nomSpecialite}}</h3>
+                    <p>{{selectedSpec.description}}</p>
+                </div>
+              
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <aside class="widget-area">
+                    <div class="widget widget_search">
+                        <form class="search-form">
+                            <input type="search" class="search-field" placeholder="Search...">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                    <div class="widget widget_grin_posts_thumb mt-3">
+                        <h3 class="widget-title">Doctors</h3>
+                        <article class="item" *ngFor="let d of listDocteur">
+                            <a href="services-details.html" class="thumb">
+                                <img [src]="'data:image/jpeg;base64,' + d.img" alt="{{d.img}}" class="img-fluid">
+                            </a>
+                            <div class="info">
+                                <span>{{d.specialite.nomSpecialite}}</span>
+                                <h4 class="title usmall">
+                                    <a href="services-details.html">{{d.nom +' '+d.prenom}}</a>
+                                </h4>
+                            </div>
+                        </article>
+                       
+                    </div>
+                    <div class="widget widget_categories">
+                        <h3 class="widget-title">Others Speciality </h3>
+                        <ul >
+                            <li *ngFor="let s of listSpec"><a (click)="learnMore(s.id)">{{s.nomSpecialite}}</a></li>
+                            
+                        </ul>
+                    </div>
+                  
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>

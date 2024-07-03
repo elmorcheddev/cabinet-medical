@@ -1,0 +1,84 @@
+<div class="content">
+    <div class="row">
+
+        <div class="col-lg-3 col-sm-6 col-12 d-flex">
+            <div class="dash-count">
+                <div class="dash-counts">
+                    <h4>{{nbrP}}</h4>
+                    <h5>Patient</h5>
+                </div>
+                <div class="dash-imgs">
+                    <i data-feather="user"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 col-12 d-flex">
+            <div class="dash-count das1">
+                <div class="dash-counts">
+                    <h4>{{nbrD}}</h4>
+                    <h5>Doctors</h5>
+                </div>
+                <div class="dash-imgs">
+                    <i data-feather="user-check"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 col-12 d-flex">
+            <div class="dash-count das2">
+                <div class="dash-counts">
+                    <h4>{{rdv}}</h4>
+                    <h5>Appoinment Accepted</h5>
+                </div>
+                <div class="dash-imgs">
+                    <i data-feather="file-text"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 col-12 d-flex">
+            <div class="dash-count das3">
+                <div class="dash-counts">
+                    <h4>105</h4>
+                    <h5>Sales Invoice</h5>
+                </div>
+                <div class="dash-imgs">
+                    <i data-feather="file"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 col-sm-12 col-12">
+          <div class="card flex-fill">
+            <div class="card-header pb-0 d-flex justify-content-between align-items-center">
+              <h5 class="card-title mb-0">Number of Appointments per Specilaite</h5>
+            </div>
+            <div class="card-body">
+                <canvas id="doctorRendezVousChart" width="400" height="400"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-sm-12 col-12">
+            <div class="card flex-fill">
+              <div class="card-header pb-0 d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0">Number of Appointments per Date</h5>
+              </div>
+              <div class="card-body">
+                  <canvas id="dateRendezVousChart" width="400" height="400"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-sm-12 col-12">
+            <div class="card flex-fill">
+              <div class="card-header pb-0 d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0">Number of Patient per Date</h5>
+              </div>
+              <div class="card-body">
+                  <canvas id="datepatientChart" width="400" height="400"></canvas>
+              </div>
+            </div>
+          </div>
+      </div>
+   
+</div>
+ 

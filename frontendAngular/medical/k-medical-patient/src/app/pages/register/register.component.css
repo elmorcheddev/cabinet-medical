@@ -1,0 +1,36 @@
+.register-login-wrapper {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.register-login-form .title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.single-form {
+    margin-bottom: 15px;
+}
+
+.single-form input[type="text"],
+.single-form input[type="email"],
+.single-form input[type="password"],
+.single-form input[type="date"],
+.single-form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.single-form button {
+    margin-top: 10px;
+}
+
+.single-form a {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+}
